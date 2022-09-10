@@ -7,9 +7,10 @@ from MainWindow import Ui_MainWindow
 from AddWindow import Ui_AddWindow
 import sys
 import json
+from utils import json_export
 
 with open('data.json', 'r', encoding='utf-8') as fh: 
-    d = json.load(fh)
+	d = json.load(fh)
 
 app = QtWidgets.QApplication(sys.argv)
 MainWindow = QtWidgets.QMainWindow()
@@ -20,8 +21,7 @@ MainWindow.show()
 def addNewContact(a, b):
 	AddWindow.close()
 	d[a] = b
-	with open("data.json", "w") as write_file:
-		json.dump(d, write_file)
+	json_export(d)
 	print(d)
 	ui.setupUi(MainWindow, d)
 
