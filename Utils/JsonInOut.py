@@ -6,8 +6,12 @@ dict ={
   "department": "HR"
 }
 
-def Export(filename, data):
-    with open(filename,"w") as f:
-        json.dump(data, f, indent=4)
+def Import(filename):
+    data = {}
+    with open(filename,"r") as f:
+        data = json.load(f)
+    return data
 
-Export("1.json", dict)
+def Export(filename, data):
+    with open(filename,"r+") as f:
+        json.dump(data, f, indent=4)
