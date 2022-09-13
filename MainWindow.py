@@ -1,11 +1,12 @@
 from ast import Delete
+from re import A
 from PyQt5 import QtCore, QtGui, QtWidgets
 import json
 from utils import json_export
 class Ui_MainWindow(object):
-	def setupUi(self, MainWindow, d):
+	def setupUi(self, MainWindow, d_ui, searhtext):
 
-		names = [str(x) for x in d]
+		names = [str(x) for x in d_ui]
 
 
 		MainWindow.setObjectName("MainWindow")
@@ -27,13 +28,13 @@ class Ui_MainWindow(object):
 		for i in range(len(names)):
 			item = QtWidgets.QTableWidgetItem(names[i])
 			self.tableWidget.setItem(i,0,item)
-			item = QtWidgets.QTableWidgetItem(d[names[i]])
+			item = QtWidgets.QTableWidgetItem(d_ui[names[i]])
 			self.tableWidget.setItem(i,1,item)
 		
 		
 		self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
 		self.lineEdit.setGeometry(QtCore.QRect(60, 55, 500, 30))
-		self.lineEdit.setText("")
+		self.lineEdit.setText(searhtext)
 		self.lineEdit.setObjectName("lineEdit")
 		self.pushButton = QtWidgets.QPushButton(self.centralwidget)
 		self.pushButton.setGeometry(QtCore.QRect(560, 55, 100, 30))
@@ -53,18 +54,8 @@ class Ui_MainWindow(object):
 		self.statusbar.setObjectName("statusbar")
 		MainWindow.setStatusBar(self.statusbar)
 
-		self.pushButton_3.clicked.connect(lambda: self.delete_row(d))
 		self.retranslateUi(MainWindow)
 		QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
-	def delete_row(self, d):
-		row = self.tableWidget.currentRow()
-		print(row)
-		del d[self.tableWidget.item(row,0).text()]
-		
-		json_export(d)
-		if (row>0):
-			self.tableWidget.removeRow(row)
 
 	def retranslateUi(self, MainWindow):
 		_translate = QtCore.QCoreApplication.translate
