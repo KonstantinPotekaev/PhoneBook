@@ -38,7 +38,7 @@ class Ui_AddWindow(object):
 
     def retranslateUi(self, AddWindow):
         _translate = QtCore.QCoreApplication.translate
-        AddWindow.setWindowTitle(_translate("AddWindow", "MainWindow"))
+        AddWindow.setWindowTitle(_translate("AddWindow", "Добавление контакта"))
         self.label.setText(_translate("AddWindow", "Введите ФИО:"))
         self.pushButton.setText(_translate("AddWindow", "Добавить"))
         self.label_2.setText(_translate("AddWindow", "Введите телефон:"))

@@ -2,11 +2,11 @@ from ast import Delete
 from re import A
 from PyQt5 import QtCore, QtGui, QtWidgets
 import json
-from utils import json_export
+from utils import json_export, json_import
 class Ui_MainWindow(object):
-	def setupUi(self, MainWindow, d_ui, searhtext):
+	def setupUi(self, MainWindow, d, searhtext):
 
-		names = [str(x) for x in d_ui]
+		names = [str(x) for x in d]
 
 
 		MainWindow.setObjectName("MainWindow")
@@ -28,7 +28,7 @@ class Ui_MainWindow(object):
 		for i in range(len(names)):
 			item = QtWidgets.QTableWidgetItem(names[i])
 			self.tableWidget.setItem(i,0,item)
-			item = QtWidgets.QTableWidgetItem(d_ui[names[i]])
+			item = QtWidgets.QTableWidgetItem(d[names[i]])
 			self.tableWidget.setItem(i,1,item)
 		
 		
@@ -45,6 +45,14 @@ class Ui_MainWindow(object):
 		self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
 		self.pushButton_3.setGeometry(QtCore.QRect(460, 450, 93, 31))
 		self.pushButton_3.setObjectName("pushButton_3")
+		self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+		self.pushButton_4.setGeometry(QtCore.QRect(60, 450, 93, 30))
+		self.pushButton_4.setObjectName("pushButton_4")
+		self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
+		self.pushButton_5.setGeometry(QtCore.QRect(170, 450, 93, 30))
+		self.pushButton_5.setObjectName("pushButton_5")
+		
+
 		MainWindow.setCentralWidget(self.centralwidget)
 		self.menubar = QtWidgets.QMenuBar(MainWindow)
 		self.menubar.setGeometry(QtCore.QRect(0, 0, 706, 26))
@@ -59,10 +67,12 @@ class Ui_MainWindow(object):
 
 	def retranslateUi(self, MainWindow):
 		_translate = QtCore.QCoreApplication.translate
-		MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+		MainWindow.setWindowTitle(_translate("MainWindow", "Телефонный справочник"))
 		self.pushButton.setText(_translate("MainWindow", "Найти"))
 		self.pushButton_2.setText(_translate("MainWindow", "Добавить"))
 		self.pushButton_3.setText(_translate("MainWindow", "Удалить"))
+		self.pushButton_4.setText(_translate("MainWindow", 'Импорт'))
+		self.pushButton_5.setText(_translate("MainWindow", 'Экспорт'))
 
 
 
