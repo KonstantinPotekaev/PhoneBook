@@ -4,9 +4,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import json
 from utils import json_export, json_import
 class Ui_MainWindow(object):
-	def setupUi(self, MainWindow, d, searhtext):
+	def setupUi(self, MainWindow, searhtext):
 
-		names = [str(x) for x in d]
+		
 
 
 		MainWindow.setObjectName("MainWindow")
@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
 		self.tableWidget.setGeometry(QtCore.QRect(60, 100, 600, 340))
 		self.tableWidget.setObjectName("tableWidget")
 		self.tableWidget.setColumnCount(2)
-		self.tableWidget.setRowCount(len(names))
+		self.tableWidget.setRowCount(0)
 		item = QtWidgets.QTableWidgetItem('ФИО')
 		self.tableWidget.setHorizontalHeaderItem(0,item)
 		item = QtWidgets.QTableWidgetItem('Телефон')
@@ -25,11 +25,7 @@ class Ui_MainWindow(object):
 		self.tableWidget.setColumnWidth(1,150)
 		self.tableWidget.setHorizontalHeaderItem(1,item)
 		#self.tableWidget.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
-		for i in range(len(names)):
-			item = QtWidgets.QTableWidgetItem(names[i])
-			self.tableWidget.setItem(i,0,item)
-			item = QtWidgets.QTableWidgetItem(d[names[i]])
-			self.tableWidget.setItem(i,1,item)
+		
 		
 		
 		self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)

@@ -1,17 +1,13 @@
 import json
+import os
 
-dict ={
-  "id": "04",
-  "name": "sunil",
-  "department": "HR"
-}
-
-def Import(filename):
+def json_Import(filename):
     data = {}
-    with open(filename,"r") as f:
-        data = json.load(f)
+    if (os.stat(filename).st_size != 0):
+        with open(filename,"r") as f:
+            data = json.load(f)
     return data
 
-def Export(filename, data):
-    with open(filename,"r+") as f:
-        json.dump(data, f, indent=4)
+def json_Export(filename, data):
+    with open(filename,"w+") as f:
+        json.dump(data, f)

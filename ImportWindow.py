@@ -1,7 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_ExportWindow(object):
+class Ui_ImportWindow(object):
     def setupUi(self, ImportWindow):
         ImportWindow.setObjectName("ImportWindow")
         ImportWindow.resize(340, 250)
