@@ -12,7 +12,7 @@ def unic_function(description, value):
     try:
         if value:
             logger.info(f'{description} - {value}')
-    except Exception as err:
+    except BaseException as err:
         logger.exception({err})
 
 # Функция логирования добавления контакта
@@ -20,7 +20,7 @@ def log_contact_add(name, phone):
     try:
         if name and phone:
             logger.info(f'Успешно добавлен контакт {name} с номером телефона {phone}')
-    except Exception as err:
+    except BaseException as err:
         logger.exception({err})
 
 # Функция логирования удаления контакта
@@ -28,5 +28,5 @@ def log_contact_del(name, phone):
     try:
         if name and phone:
             logger.info(f'Успешно удален контакт {name} с номером телефона {phone}')
-    except Exception as err:
+    except BaseException as err:
         logger.exception({err})
