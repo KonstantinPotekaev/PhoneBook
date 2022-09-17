@@ -16,6 +16,7 @@ from Utils.XmlInOut import *
 
 
 def Import(path):
+    logger_main.unic_function('Нажата кнопка импорта из файл: ', path)  # Логирование импорта
     ImportWindow.close()
     if (Path(path).suffix == '.json'):
         contacts = json_Import(path)
@@ -50,6 +51,7 @@ def RebuildMainWindow(data):
 
 
 def addNewContact(a, b):
+    logger_main.log_contact_add(a, b)  # Логирование добавления контакта
     AddWindow.close()
     d = json_import()
     d[a] = b
@@ -58,6 +60,7 @@ def addNewContact(a, b):
 
 
 def Export(path):
+    logger_main.unic_function('Нажата кнопка экспорта в файл:', path)  # Логирование экспорта
     ExportWindow.close()
     d = json_import()
     if (Path(path).suffix == '.json'):
@@ -98,6 +101,7 @@ def showImportWindow():
 def find():
     d = json_import()
     a = ui.lineEdit.text().lower()
+    logger_main.unic_function('Нажата кнопка поиска по списку контактов, Результат :', d)  # Логирование поиска по списку
 
     d2 = {}
     if (a != ''):
@@ -116,6 +120,7 @@ def find():
 def delete_row():
     d = json_import()
     row = ui.tableWidget.currentRow()
+    logger_main.unic_function('Успешно удален контакт с номером:', d[ui.tableWidget.item(row, 0).text()])  # Логирование удаления контакта
     del d[ui.tableWidget.item(row, 0).text()]
     json_export(d)
     RebuildMainWindow(d)
